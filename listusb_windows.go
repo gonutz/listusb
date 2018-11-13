@@ -13,7 +13,6 @@ func Directories() []string {
 	for i := 0; i < 26; i++ {
 		if driveBits&(1<<uint(i)) != 0 {
 			drive := string('A'+i) + ":"
-			println(drive, "exists")
 			if getBusType(drive) == w32.BusTypeUsb {
 				dirs = append(dirs, drive)
 			}
