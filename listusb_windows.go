@@ -4,7 +4,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/gonutz/w32"
+	"github.com/gonutz/w32/v2"
 )
 
 func Directories() []string {
@@ -12,7 +12,7 @@ func Directories() []string {
 	driveBits := w32.GetLogicalDrives()
 	for i := 0; i < 26; i++ {
 		if driveBits&(1<<uint(i)) != 0 {
-			drive := string('A'+i) + ":"
+			drive := string(rune('A'+i)) + ":"
 			if getBusType(drive) == w32.BusTypeUsb {
 				dirs = append(dirs, drive)
 			}
